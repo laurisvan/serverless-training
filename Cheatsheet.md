@@ -49,5 +49,8 @@ Deploy the service
 > sls deploy function -f <function-name> [-s] [-r] # Deploys a single function (not using CF)
 > sls deploy list                                  # List deployments
 
+View the logs
+> sls logs -f <function-name>            # View function logs
+
 Remove the service
 > sls remove [-stage <stage>] [-r <region>] [-n <service-name>] # Removes a service
