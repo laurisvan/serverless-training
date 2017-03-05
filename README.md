@@ -15,3 +15,35 @@ After this tutorial, you should:
 * Personal AWS account
 * A HTTP client (the tutorial uses Postman)
 * Serverless 1.X installed (the tutorial uses 1.7.0)
+
+## Contents
+
+### Session 1: Hello World in Serverless
+
+Goal: Get to know Serverless CLI and how it plays with AWS. We create a simple
+Serverless service.
+
+Demo:
+
+* Configure the environment
+* Create run, deploy & delete a Serverless function
+* Create a HTTP(S) endpoint
+* Peek into Serverless YAML configuration
+* Peek under the hood: What happened in AWS: Lambda, API Gateway, Cloudwatch
+
+Exercise: Set up your own project
+
+* Configure your credentials
+* Create a Hello, World that accepts input
+* Invoke it remotely & over HTTPS - experiment with the data that API Gateway provides
+* Deploy & monitor the logs when you call it
+* Optional: Write error handler(s) supporting a few types of input
+  * Path
+  * JSON body
+  * Query string
+
+More information:
+
+* Git tags: 0.0.0-initial, 0.0.1-hello
+* [Cheatsheet](Cheatsheet.md)
+* [API Gateway proxy format](http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-set-up-simple-proxy.html)
