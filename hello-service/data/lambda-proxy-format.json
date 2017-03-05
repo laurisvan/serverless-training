@@ -1,0 +1,55 @@
+{
+  "resource":"/hello/{proxy+}",
+  "path":"/hello/Lauri/Svan",
+  "httpMethod":"GET",
+  "headers":{
+    "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Encoding":"gzip, deflate, sdch, br",
+    "Accept-Language":"en-US,en;q=0.8,fi;q=0.6",
+    "CloudFront-Forwarded-Proto":"https",
+    "CloudFront-Is-Desktop-Viewer":"true",
+    "CloudFront-Is-Mobile-Viewer":"false",
+    "CloudFront-Is-SmartTV-Viewer":"false",
+    "CloudFront-Is-Tablet-Viewer":"false",
+    "CloudFront-Viewer-Country":"FI",
+    "Host":"s0wtb8ts8d.execute-api.us-east-1.amazonaws.com",
+    "upgrade-insecure-requests":"1",
+    "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+    "Via":"2.0 d9adada028fe3a04aed64f9ed9d80dd2.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Id":"cle131vWYHU6sS6Vc2ejdVBIh_17WVo6fWNUg4P7dwA0Dy9CLqkj7g==",
+    "X-Amzn-Trace-Id":"Root=1-58bc419e-5441900a55a651a2149909f7",
+    "X-Forwarded-For":"212.149.200.16, 54.240.144.66",
+    "X-Forwarded-Port":"443",
+    "X-Forwarded-Proto":"https"
+  },
+  "queryStringParameters":null,
+  "pathParameters":{
+    "proxy":"Lauri/Svan"
+  },
+  "stageVariables":null,
+  "requestContext":{
+    "accountId":"295452550394",
+    "resourceId":"g4a4ah",
+    "stage":"dev",
+    "requestId":"b6375752-01c3-11e7-a40a-ff4703a33542",
+    "identity":{
+      "cognitoIdentityPoolId":null,
+      "accountId":null,
+      "cognitoIdentityId":null,
+      "caller":null,
+      "apiKey":null,
+      "sourceIp":"212.149.200.16",
+      "accessKey":null,
+      "cognitoAuthenticationType":null,
+      "cognitoAuthenticationProvider":null,
+      "userArn":null,
+      "userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+      "user":null
+    },
+    "resourcePath":"/hello/{proxy+}",
+    "httpMethod":"GET",
+    "apiId":"s0wtb8ts8d"
+  },
+  "body":null,
+  "isBase64Encoded":false
+}

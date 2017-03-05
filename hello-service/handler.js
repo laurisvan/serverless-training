@@ -1,18 +1,18 @@
 'use strict';
 
 module.exports.hello = (event, context, callback) => {
-  console.info(`[Hello] Invoking Lambda with input ${JSON.stringify(event)}`);
+  console.info(`[Hello] Invoking with input ${JSON.stringify(event)}`);
 
   try {
     // Manual error handling
     if (typeof event !== 'object') {
       throw new TypeError(`Invalid input: Expected object, got ${JSON.stringify(event)}`);
-    } else if (typeof event.name !== 'string') {
-      throw new TypeError(`Invalid input: .name should be a string`);
+    } else if (typeof event.pathParameters.proxy !== 'string') {
+      throw new TypeError(`Invalid input: pathParameters.proxy should be a string`);
     }
 
     // Handle response
-    const name = event.name;
+    const name = event.pathParameters.proxy.split('/').join(' ');
     const response = {
       statusCode: 200,
       body: JSON.stringify({
@@ -37,12 +37,12 @@ module.exports.hello = (event, context, callback) => {
 
     const response = {
       statusCode: statusCode,
-      body: {
+      body: JSON.stringify({
         userMessage: userMessage,
         message: error.message,
         stackTrace: error.stack,
         input: event,
-      }
+      }),
     };
 
     callback(null, response);

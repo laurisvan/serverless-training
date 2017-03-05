@@ -9,4 +9,18 @@ region: eu-west-1
 
 functions:
   hello:
+    # The handler format refe
     handler: handler.hello
+    events:
+      - http:
+          # Proxy-lambda method accepts arbitrary paths and passes it as a string
+          path: hello/{proxy+}
+          method: get
+          # Manual integration method
+          #path: hello/{name}
+          #method: get
+          #integration: lambda
+          #request:
+          #  parameters:
+          #     paths:
+          #       name: true
