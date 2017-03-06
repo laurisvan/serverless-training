@@ -1,0 +1,56 @@
+{
+  "resource":"/api/meetups/{meetup}",
+  "path":"/api/meetups/123",
+  "httpMethod":"GET",
+  "headers":{
+    "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Encoding":"gzip, deflate, sdch, br",
+    "Accept-Language":"en-US,en;q=0.8,fi;q=0.6",
+    "CloudFront-Forwarded-Proto":"https",
+    "CloudFront-Is-Desktop-Viewer":"true",
+    "CloudFront-Is-Mobile-Viewer":"false",
+    "CloudFront-Is-SmartTV-Viewer":"false",
+    "CloudFront-Is-Tablet-Viewer":"false",
+    "CloudFront-Viewer-Country":"FI",
+    "Cookie":"_ga=GA1.2.1481462069.1470292770; optimizelyBuckets=%7B%7D; optimizelyEndUserId=oeu1470292769079r0.16446622025504598; optimizelySegments=%7B%224930820535%22%3A%22gc%22%2C%224925760032%22%3A%22false%22%2C%224932810018%22%3A%22direct%22%7D",
+    "Host":"jzee85d0i2.execute-api.eu-west-1.amazonaws.com",
+    "upgrade-insecure-requests":"1",
+    "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+    "Via":"2.0 1eea0bca59557555878da4d9775c509f.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Id":"poKPAbcOpY05GVqyiQ0jvtsWv5zmvlqQIJZNGD7NBQMiqMVLqQPAHg==",
+    "X-Amzn-Trace-Id":"Root=1-58be53ef-2c92acea28cb8e2c4fb490e6",
+    "X-Forwarded-For":"212.149.200.16, 205.251.250.123",
+    "X-Forwarded-Port":"443",
+    "X-Forwarded-Proto":"https"
+  },
+  "queryStringParameters":null,
+  "pathParameters":{
+    "meetup":"123"
+  },
+  "stageVariables":null,
+  "requestContext":{
+    "accountId":"295452550394",
+    "resourceId":"z3km2j",
+    "stage":"dev",
+    "requestId":"ce1751a7-02ff-11e7-a0f9-fb0d1b058dbc",
+    "identity":{
+      "cognitoIdentityPoolId":null,
+      "accountId":null,
+      "cognitoIdentityId":null,
+      "caller":null,
+      "apiKey":null,
+      "sourceIp":"212.149.200.16",
+      "accessKey":null,
+      "cognitoAuthenticationType":null,
+      "cognitoAuthenticationProvider":null,
+      "userArn":null,
+      "userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36",
+      "user":null
+    },
+    "resourcePath":"/api/meetups/{meetup}",
+    "httpMethod":"GET",
+    "apiId":"jzee85d0i2"
+  },
+  "body":null,
+  "isBase64Encoded":false
+}
