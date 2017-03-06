@@ -7,6 +7,11 @@ provider:
 stage: dev
 region: eu-west-1
 
+package:
+  # Exclude sample data from build
+  exclude:
+    - data/**
+
 functions:
   hello:
     # The handler format refe
