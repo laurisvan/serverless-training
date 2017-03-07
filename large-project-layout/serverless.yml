@@ -10,7 +10,7 @@ package:
   # By default, exclude everything (include in individual functions)
   individually: true
   exclude:
-    - ./**
+    - "**"
 
 functions:
   api-meetups:

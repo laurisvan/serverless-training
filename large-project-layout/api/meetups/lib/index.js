@@ -1,23 +1,27 @@
 const request = require('request-promise-lite');
 
-const STUB_MEETUPS = [
-  { id: 123, name: 'Node.js for Serverless developers' }
-];
+// HelNode meetup group
+const GROUP_ID = 'Helsinki-Node-js';
+const URL_BASE = `https://api.meetup.com/${GROUP_ID}`;
 
 function findMeetups() {
   console.info(`[Meetups] findMeetups()`);
-  return Promise.resolve(STUB_MEETUPS);
+  const query = {
+    status: 'cancelled,upcoming,past,proposed,suggested,draft'
+  }
+  const url = `${URL_BASE}/events`;
+
+  return request.get(url, { qs: query, json: true });
 }
 
 function findMeetupById(meetupId) {
   console.info(`[Meetups] findMeetupsById() called with ${meetupId}`);
-  const meetup = STUB_MEETUPS.find(meetup => meetup.id === meetupId);
-
-  if (!meetup) {
-    return Promise.reject(new Error(`[404] Meetup ${meetupId} not found`));
+  const query = {
+    status: 'cancelled,upcoming,past,proposed,suggested,draft',
   }
+  const url = `${URL_BASE}/events/${meetupId}`;
 
-  return Promise.resolve(meetup);
+  return request.get(url, { qs: query, json: true });
 }
 
 module.exports = {

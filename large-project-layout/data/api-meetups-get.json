@@ -1,6 +1,6 @@
 {
   "resource":"/api/meetups/{meetup}",
-  "path":"/api/meetups/123",
+  "path":"/api/meetups/179772462",
   "httpMethod":"GET",
   "headers":{
     "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
@@ -25,7 +25,7 @@
   },
   "queryStringParameters":null,
   "pathParameters":{
-    "meetup":"123"
+    "meetup":"179772462"
   },
   "stageVariables":null,
   "requestContext":{
