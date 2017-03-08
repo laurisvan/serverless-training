@@ -1,0 +1,14 @@
+{
+  "name": "serverless-training-large-project-layout",
+  "version": "0.0.1",
+  "description": "Serverless Training - large project layout",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-secrets-plugin": "0.0.1"
+  }
+}

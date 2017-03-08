@@ -25,10 +25,10 @@ function findMeetupById(meetupId) {
 }
 
 function createMeetup(name, description, time, duration) {
-  console.info(`[Meetups] findMeetups(${name}, ${description}, ${time}, ${duration})`);
+  console.info(`[Meetups] createMeetup(${name}, ${description}, ${time}, ${duration})`);
   const query = {
     sign: true,
-    key: 'HARDCODED_KEY', //process.env.MEETUP_API_KEY,
+    key: process.env.MEETUP_API_KEY,
   };
   const body = {
     announce: false,

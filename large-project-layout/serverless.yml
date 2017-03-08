@@ -1,5 +1,8 @@
 service: large-project-layout
 
+plugins:
+  - serverless-secrets-plugin
+
 provider:
   name: aws
   runtime: nodejs4.3
@@ -11,6 +14,9 @@ package:
   individually: true
   exclude:
     - "**"
+
+custom:
+  secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
 
 functions:
   api-meetups:
@@ -28,6 +34,8 @@ functions:
     package:
       include:
         - api/meetups/**
+    environment:
+      MEETUP_API_KEY: ${self:custom.secrets.MEETUP_API_KEY}
 
   # api-subscriptions-post:
   #   handler: api/subscriptions/index.post
