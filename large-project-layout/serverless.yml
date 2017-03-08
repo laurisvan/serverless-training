@@ -3,6 +3,7 @@ service: large-project-layout
 plugins:
   - serverless-secrets-plugin
   - serverless-webpack
+  - serverless-jest-plugin
 
 provider:
   name: aws

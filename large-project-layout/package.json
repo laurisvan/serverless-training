@@ -4,7 +4,7 @@
   "description": "Serverless Training - large project layout",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "sls invoke test"
   },
   "author": "",
   "license": "MIT",
@@ -15,7 +15,8 @@
     "babel-preset-es2017": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
     "babili-webpack-plugin": "0.0.10",
-    "serverless-webpack": "^1.0.0-rc.4",
-    "serverless-secrets-plugin": "0.0.1"
+    "serverless-jest-plugin": "^0.1.2",
+    "serverless-secrets-plugin": "0.0.1",
+    "serverless-webpack": "^1.0.0-rc.4"
   }
 }
