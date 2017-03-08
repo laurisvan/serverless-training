@@ -1,0 +1,52 @@
+{
+  "resource":"/api/meetups",
+  "path":"/api/meetups/",
+  "httpMethod":"POST",
+  "headers":{
+    "Accept":"*/*",
+    "Accept-Encoding":"gzip, deflate",
+    "CloudFront-Forwarded-Proto":"https",
+    "CloudFront-Is-Desktop-Viewer":"true",
+    "CloudFront-Is-Mobile-Viewer":"false",
+    "CloudFront-Is-SmartTV-Viewer":"false",
+    "CloudFront-Is-Tablet-Viewer":"false",
+    "CloudFront-Viewer-Country":"FI",
+    "Content-Type":"application/json",
+    "Host":"jzee85d0i2.execute-api.eu-west-1.amazonaws.com",
+    "User-Agent":"insomnia/4.2.14",
+    "Via":"1.1 d2d710f17290a2bb519557d91f33b63d.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Id":"Cn44Rm5nyRmQdnH5vZDHEq8UQXH5nMg2i91loFfVYmdMSZLemjYF8w==",
+    "X-Amzn-Trace-Id":"Root=1-58bfa817-50b3e057553ea8ab617ebc45",
+    "X-Forwarded-For":"212.149.200.16, 205.251.250.165",
+    "X-Forwarded-Port":"443",
+    "X-Forwarded-Proto":"https"
+  },
+  "queryStringParameters":null,
+  "pathParameters":null,
+  "stageVariables":null,
+  "requestContext":{
+    "accountId":"295452550394",
+    "resourceId":"k8cf0q",
+    "stage":"dev",
+    "requestId":"8d85c2ba-03ca-11e7-ba7d-69a3dbd3dc87",
+    "identity":{
+      "cognitoIdentityPoolId":null,
+      "accountId":null,
+      "cognitoIdentityId":null,
+      "caller":null,
+      "apiKey":null,
+      "sourceIp":"212.149.200.16",
+      "accessKey":null,
+      "cognitoAuthenticationType":null,
+      "cognitoAuthenticationProvider":null,
+      "userArn":null,
+      "userAgent":"insomnia/4.2.14",
+      "user":null
+    },
+    "resourcePath":"/api/meetups",
+    "httpMethod":"POST",
+    "apiId":"jzee85d0i2"
+  },
+  "body":"{\n\t\"name\": \"Serverless Training Vol. 1\",\n\t\"description\": \"Basics of Serverless\",\n\t\"time\": 1490022000000,\n\t\"duration\": 7200000\n}",
+  "isBase64Encoded":false
+}

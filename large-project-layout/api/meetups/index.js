@@ -1,6 +1,6 @@
 'use strict';
 
-const lib = require('./lib');
+const meetups = require('./lib');
 
 const DEFAULT_RESPONSE = {
   statusCode: 500,
@@ -12,13 +12,21 @@ function route(event, context, callback) {
 
   return new Promise((resolve, reject) => {
     // TODO parse & validate input
-    switch(event.resource) {
-      case '/api/meetups':
-        return resolve(lib.findMeetups());
-      case '/api/meetups/{meetup}':
-        return resolve(lib.findMeetupById(event.pathParameters.meetup));
+    const route = `${event.httpMethod} ${event.resource}`;
+    console.info(`[Meetups API] Invoke route ${route}`);
+
+    let body;
+    switch(route) {
+      case 'GET /api/meetups':
+        return resolve(meetups.findMeetups());
+      case 'GET /api/meetups/{meetup}':
+        return resolve(meetups.findMeetupById(event.pathParameters.meetup));
+      case 'POST /api/meetups':
+        body = JSON.parse(event.body);
+        return resolve(meetups.createMeetup(body.name, body.description,
+          body.time, body.duration));
       default:
-        return reject(new Error(`[404] Resource not found ${input.resource}`));
+        return reject(new Error(`[404] Resource not found ${route}`));
     }
   })
   .then(

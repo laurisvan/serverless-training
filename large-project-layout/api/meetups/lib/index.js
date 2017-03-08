@@ -24,7 +24,28 @@ function findMeetupById(meetupId) {
   return request.get(url, { qs: query, json: true });
 }
 
+function createMeetup(name, description, time, duration) {
+  console.info(`[Meetups] findMeetups(${name}, ${description}, ${time}, ${duration})`);
+  const query = {
+    sign: true,
+    key: 'HARDCODED_KEY', //process.env.MEETUP_API_KEY,
+  };
+  const body = {
+    announce: false,
+    description: description,
+    duration: duration,
+    name: name,
+    publish_status: 'draft',
+    time: time,
+  };
+  const url = `${URL_BASE}/events/`;
+
+  return request.post(url, { form: body, qs: query, verbose: true})
+    .then(response => JSON.parse(response.toString()));
+}
+
 module.exports = {
   findMeetups,
   findMeetupById,
+  createMeetup,
 };

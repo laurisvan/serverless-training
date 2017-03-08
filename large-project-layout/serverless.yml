@@ -22,6 +22,9 @@ functions:
       - http:
           path: api/meetups/{meetup}
           method: get
+      - http:
+          path: api/meetups/
+          method: post
     package:
       include:
         - api/meetups/**
