@@ -2,15 +2,13 @@
 
 const meetups = require('./lib');
 
-const DEFAULT_RESPONSE = {
-  statusCode: 500,
-  response: { message: 'Internal server error' },
-};
-
-function route(event, context, callback) {
+async function route(event, context, callback) {
   console.info(`[Meetups API] Handle request ${JSON.stringify(event)}`);
 
-  return new Promise((resolve, reject) => {
+  // Placeholder for response that is sent back from Lambda
+  let response;
+  let statusCode;
+  try {
     // TODO parse & validate input
     const route = `${event.httpMethod} ${event.resource}`;
     console.info(`[Meetups API] Invoke route ${route}`);
@@ -18,38 +16,34 @@ function route(event, context, callback) {
     let body;
     switch(route) {
       case 'GET /api/meetups':
-        return resolve(meetups.findMeetups());
+        response = await meetups.findMeetups();
+        break;
       case 'GET /api/meetups/{meetup}':
-        return resolve(meetups.findMeetupById(event.pathParameters.meetup));
+        response = await meetups.findMeetupById(event.pathParameters.meetup);
+        break;
       case 'POST /api/meetups':
         body = JSON.parse(event.body);
-        return resolve(meetups.createMeetup(body.name, body.description,
-          body.time, body.duration));
+        response = meetups.createMeetup(body.name, body.description,
+          body.time, body.duration);
       default:
-        return reject(new Error(`[404] Resource not found ${route}`));
+        throw new Error(`[404] Resource not found ${route}`);
     }
-  })
-  .then(
-    response => ({ statusCode: 200, response }),
+  } catch(error) {
     // TODO Write proper error handling
-    error => ({ statusCode: /\[\d{3}\]/[0] || 500, response: { message: error.message }})
-  )
-  .then(responseTuple => {
-    console.info(`[Meetups API] Handle response ${JSON.stringify(responseTuple)}`);
+    statusCode = /\[\d{3}\]/[0] || 500;
+    response: { message: error.message };
+  }
 
-    // Defaults (in case of rejecting with abnormal errors)
-    responseTuple = responseTuple || DEFAULT_RESPONSE;
+  console.info(`[Meetups API] Handle response ${statusCode}: ${JSON.stringify(response)}`);
+  const envelope = {
+    statusCode,
+    body: JSON.stringify({
+      response,
+      input: event,
+    }),
+  };
 
-    const envelope = {
-      statusCode: responseTuple.statusCode,
-      body: JSON.stringify({
-        response: responseTuple.response,
-        input: event,
-      }),
-    };
-
-    callback(null, envelope);
-  });
+  callback(null, envelope);
 }
 
 module.exports = {
