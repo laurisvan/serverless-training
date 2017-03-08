@@ -7,3 +7,6 @@ jspm_packages
 
 # Secrets
 secrets.*.yml
+
+# Webpack bundles
+.webpack
