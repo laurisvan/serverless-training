@@ -9,16 +9,22 @@ const jestPlugin = require('serverless-jest-plugin');
 const lambdaWrapper = jestPlugin.lambdaWrapper;
 const wrapped = lambdaWrapper.wrap(mod, { handler: 'route' });
 
+const cases = ['api-meetups-list.json', 'api-meetups-get.json', 'api-meetups-post.json']
+  .map(file => ({ name: file, data: require(`../data/${file}`)}));
+
+// Suppress console.info that will make tests more difficult to read
+console.info = () => {};
+
 describe('api-meetups', () => {
-  beforeAll((done) => {
-//  lambdaWrapper.init(liveFunction); // Run the deployed lambda
+  beforeAll(async () => {});
 
-    done();
-  });
+  it(`Runs succesfully for ${cases[0].name}`, async () => {
+    const response = await wrapped.run(cases[0].data);
 
-  it('implement tests here', () => {
-    return wrapped.run({}).then((response) => {
-      expect(response).toBeDefined();
-    });
+    expect(response).toBeDefined();
+    const body = JSON.parse(response.body);
+
+    // Note: The current SLS wrapper only wraps response body, not other params
+    expect(body.response).toBeDefined();
   });
 });
