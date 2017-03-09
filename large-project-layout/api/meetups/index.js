@@ -14,6 +14,7 @@ async function route(event, context, callback) {
     console.info(`[Meetups API] Invoke route ${route}`);
 
     let body;
+    statusCode = 200;
     switch(route) {
       case 'GET /api/meetups':
         response = await meetups.findMeetups();
@@ -23,8 +24,9 @@ async function route(event, context, callback) {
         break;
       case 'POST /api/meetups':
         body = JSON.parse(event.body);
-        response = meetups.createMeetup(body.name, body.description,
+        response = await meetups.createMeetup(body.name, body.description,
           body.time, body.duration);
+        break;
       default:
         throw new Error(`[404] Resource not found ${route}`);
     }

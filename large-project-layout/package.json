@@ -18,7 +18,8 @@
     "node-yaml": "^3.0.3",
     "serverless-jest-plugin": "^0.1.2",
     "serverless-secrets-plugin": "0.0.1",
-    "serverless-webpack": "^1.0.0-rc.4"
+    "serverless-webpack": "^1.0.0-rc.4",
+    "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
     "knex": "^0.12.7",

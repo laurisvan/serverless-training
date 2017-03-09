@@ -1,6 +1,7 @@
 const BabiliPlugin = require('babili-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: {
@@ -13,10 +14,7 @@ module.exports = {
     filename: '[name]'
   },
   target: 'node',
-  externals: [
-    // Do not add aws-sdk - it is built-in in
-    'aws-sdk'
-  ],
+  externals: nodeExternals(),
   module: {
     loaders: [
       {
@@ -39,6 +37,6 @@ module.exports = {
     new webpack.optimize.AggressiveMergingPlugin(),
 
     // Babili Babel minification
-    new BabiliPlugin({ comments: false }),
+    //new BabiliPlugin({ comments: false }),
   ],
 };
