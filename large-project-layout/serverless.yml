@@ -18,7 +18,9 @@ package:
     - "**"
 
 custom:
-  secrets: ${file(secrets.${opt:stage, self:provider.stage}.yml)}
+  stage: ${opt:stage, self:provider.stage}
+  secrets: ${file(secrets.${self:custom.stage}.yml)}
+  webpackIncludeModules: true # enable auto-packing of external modules
 
 functions:
   api-meetups:
@@ -38,6 +40,13 @@ functions:
         - api/meetups/**
     environment:
       MEETUP_API_KEY: ${self:custom.secrets.MEETUP_API_KEY}
+      # Note: Environment handles are required even for indirect references
+      POSTGRES_DB_NAME: ${self:custom.secrets.POSTGRES_DB_NAME}
+      POSTGRES_DB_HOST: ${self:custom.secrets.POSTGRES_DB_HOST}
+      POSTGRES_DB_PORT: ${self:custom.secrets.POSTGRES_DB_PORT}
+      # TODO: Use other than root credentials
+      POSTGRES_USER: ${self:custom.secrets.POSTGRES_ROOT_USER}
+      POSTGRES_PASSWORD: ${self:custom.secrets.POSTGRES_ROOT_PASSWORD}
 
   # api-subscriptions-post:
   #   handler: api/subscriptions/index.post
@@ -64,3 +73,35 @@ functions:
   #   handler: web/index.get
   #     - http:
   #         path: /{proxy+}
+
+resources:
+  Resources:
+    # This security group opens the DB accessible in public - not safe for production!
+    MeetupStorageSecurityGroup:
+      Type: AWS::RDS::DBSecurityGroup
+      Properties:
+        GroupDescription: Ingress for CIDRIP - Allow everybody
+        DBSecurityGroupIngress:
+          CIDRIP: "0.0.0.0/0"
+
+    # These settings aim to minimise the database costs (cheapest that you could get)
+    # Note: Resource names must be alphanumeric, DB name must be lowercase alphanumeric
+    MeetupStorage:
+      Type: AWS::RDS::DBInstance
+      Properties:
+        # TODO Configure security groups for production instance
+        DBSecurityGroups:
+          - Ref: MeetupStorageSecurityGroup
+        StorageType: standard # =magnetic
+        AllocatedStorage: "5"
+        DBInstanceClass: db.t2.micro
+        Engine: postgres
+
+        DBInstanceIdentifier: MeetupStorage
+        DBName: ${self:custom.secrets.POSTGRES_DB_NAME}
+        MasterUsername: ${self:custom.secrets.POSTGRES_ROOT_USER}
+        MasterUserPassword: ${self:custom.secrets.POSTGRES_ROOT_PASSWORD}
+        # Turn this off for production data - it helps debugging the dev data, though
+        PubliclyAccessible: true
+      # Be careful on deletion policy - when re-deploying stack, you would not want to lose data!
+      DeletionPolicy: ${self:custom.secrets.POSTGRES_RETAIN_POLICY}
